@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net;
@@ -152,6 +152,8 @@ namespace BattleArena
             {
                 _udp = new Socket(AddressFamily.InterNetwork,
                                   SocketType.Dgram, ProtocolType.Udp);
+
+                _udp.Bind(new IPEndPoint(IPAddress.Any, 0)); //바인드 추가
 
                 _udpServer = new IPEndPoint(IPAddress.Parse(SERVER_IP), StudentConfig.UdpPort);
 
